@@ -1,4 +1,5 @@
 import { http, HttpResponse, delay } from 'msw';
+
 import movies200 from './data/movies_200.json';
 import movies400 from './data/movies_400.json';
 import movies600 from './data/movies_600.json';
@@ -17,7 +18,7 @@ movies600.forEach((movie) => {
 
 export const handlers = [
   http.get('/api/movies', async ({ request }) => {
-    await delay(50);
+    await delay(150);
 
     const url = new URL(request.url);
     const limitParam = url.searchParams.get('limit');
@@ -28,7 +29,7 @@ export const handlers = [
   }),
 
   http.get('/api/movies/:id', async ({ params }) => {
-    await delay(50);
+    await delay(150);
 
     const { id } = params;
     const movie = movieMap.get(String(id));

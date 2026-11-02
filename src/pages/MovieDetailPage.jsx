@@ -1,24 +1,25 @@
-import React from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { useMovieDetail } from '../hooks/useMovieDetail';
-import { MovieBackdrop } from '../components/MovieBackdrop';
-import { MoviePoster } from '../components/MoviePoster';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
   Star,
   Calendar,
-  Eye,
   TrendingUp,
   Globe,
   Loader2,
   AlertCircle,
   Film,
-  Sparkles,
 } from 'lucide-react';
+
+import { useMovieDetail } from '../hooks/useMovieDetail';
+import { useExperiment } from '../context/ExperimentContext';
+import { MovieBackdrop } from '../components/MovieBackdrop';
+import { MoviePoster } from '../components/MoviePoster';
+
 
 export const MovieDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { queryString } = useExperiment();
   const { movie, isLoading, error, mode } = useMovieDetail(id);
 
   if (isLoading) {
@@ -32,7 +33,7 @@ export const MovieDetailPage = () => {
           Memuat Detail Film dari MSW...
         </h2>
         <p className="mt-2 text-sm text-slate-400">
-          Latency 50ms sedang disimulasikan. Mode: {mode}
+          Latency 150ms sedang disimulasikan. Mode: {mode}
         </p>
       </main>
     );
@@ -49,7 +50,7 @@ export const MovieDetailPage = () => {
           </p>
           <button
             type="button"
-            onClick={() => navigate('/')}
+            onClick={() => navigate(`/${queryString}`)}
             className="cursor-pointer mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -83,7 +84,7 @@ export const MovieDetailPage = () => {
           <button
             type="button"
             id="btn-back-catalog"
-            onClick={() => navigate('/')}
+            onClick={() => navigate(`/${queryString}`)}
             className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-950/80 hover:bg-slate-900 text-slate-200 hover:text-white backdrop-blur-md border border-slate-700/80 shadow-lg text-sm font-semibold transition-all hover:scale-105"
           >
             <ArrowLeft className="w-4 h-4 text-amber-400" />

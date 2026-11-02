@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -19,8 +20,7 @@ function apiMockFallbackPlugin() {
           const parsedUrl = new URL(req.url, 'http://localhost');
           const pathname = parsedUrl.pathname;
 
-          // Artificial delay 50ms to match MSW latency benchmark
-          await new Promise((resolve) => setTimeout(resolve, 50));
+          await new Promise((resolve) => setTimeout(resolve, 150));
 
           // Detail endpoint: /api/movies/:id
           const detailMatch = pathname.match(/^\/api\/movies\/(\d+)$/);

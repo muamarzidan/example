@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Star, Calendar, Flame } from 'lucide-react';
 
+import { useExperiment } from '../context/ExperimentContext';
 import { MoviePoster } from './MoviePoster';
 
 
 export const MovieCard = ({ movie, index }) => {
+  const { queryString } = useExperiment();
   const formattedRating = typeof movie.vote_average === 'number'
     ? movie.vote_average.toFixed(1)
     : 'N/A';
@@ -18,7 +20,7 @@ export const MovieCard = ({ movie, index }) => {
       data-index={index}
       className="group relative flex flex-col bg-slate-900/80 rounded-xl overflow-hidden border border-slate-800/80 hover:border-amber-500/50 hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300 transform hover:-translate-y-1"
     >
-      <Link to={`/movie/${movie.id}`} className="block relative focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-t-xl overflow-hidden">
+      <Link to={`/movie/${movie.id}${queryString}`} className="block relative focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-t-xl overflow-hidden">
         {/* Poster Image */}
         <MoviePoster
           posterPath={movie.poster_path}

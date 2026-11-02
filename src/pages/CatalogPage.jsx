@@ -30,7 +30,7 @@ export const CatalogPage = () => {
             Mengambil Data Katalog dari MSW...
           </h2>
           <p className="mt-2 text-sm text-slate-400 max-w-md">
-            Menunggu artificial delay 50ms. Pada mode Cache OFF, status loading ini muncul di setiap navigasi / remount.
+            Menunggu artificial delay 150ms. Pada mode Cache OFF, status loading ini muncul di setiap navigasi / remount.
           </p>
           <div className="mt-4 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-mono text-amber-400">
             Engine: {mode}
@@ -59,7 +59,7 @@ export const CatalogPage = () => {
           {isFetching && isCached && (
             <div className="mb-4 px-4 py-2 rounded-lg bg-emerald-950/40 border border-emerald-800/40 text-emerald-300 text-xs flex items-center justify-between animate-pulse">
               <span>Konten langsung disajikan dari TanStack Cache (SWR). Revalidasi latar belakang sedang berlangsung...</span>
-              <span className="font-mono font-bold">50ms delay</span>
+              <span className="font-mono font-bold">150ms delay</span>
             </div>
           )}
 

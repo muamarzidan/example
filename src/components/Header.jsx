@@ -4,7 +4,7 @@ import { useExperiment } from '../context/ExperimentContext';
 
 
 export const Header = () => {
-  const { isCacheOn, toggleCache, limit, setLimit, metrics } = useExperiment();
+  const { isCacheOn, toggleCache, limit, setLimit, queryString, metrics } = useExperiment();
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-slate-950/90 border-b border-slate-800/80 shadow-2xl shadow-black/40">
@@ -14,7 +14,7 @@ export const Header = () => {
           
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <Link to="/" className="flex items-center gap-2.5 group">
+            <Link to={`/${queryString}`} className="flex items-center gap-2.5 group">
               <span className="font-extrabold tracking-wider text-slate-100 text-lg group-hover:text-amber-400 transition-colors">
                 MOVIE<span className="text-amber-400">META DATA</span>
               </span>
